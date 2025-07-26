@@ -1,0 +1,27 @@
+﻿@model ForgetPasswordByPhoneViewModel
+@{
+    ViewData["Title"] = "SendSms";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+
+<div class="main-agileinfo">
+	<div class="agileits-top">
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<form asp-action="SendSms" method="post">
+
+
+			<input class="text" asp-for="PhoneNumber" placeholder="Phone Number" required="">
+			<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+
+			<input type="submit" value="Submit">
+		</form>
+
+	</div>
+</div>
+@section ValidationScripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
+

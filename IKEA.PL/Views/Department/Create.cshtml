@@ -1,0 +1,21 @@
+﻿@model CreatedDepartmentDTO
+@{
+    ViewData["Title"] = "Create";
+	ViewBag.Action = "Create";
+}
+
+<h1> Create New Department </h1>
+
+<br />
+<br />
+
+<partial name="partiales/CreateEditDepartmentPartial" />
+
+@section ValidationScripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+}

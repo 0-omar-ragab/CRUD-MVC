@@ -1,0 +1,26 @@
+﻿@model CreatedEmployeeToReturnDTO
+
+@inject IDepartmentService departmentService
+@{
+    ViewData["Title"] = "Create";
+    ViewBag.Action = "Create";
+ //   var Departments = new SelectList(departmentService.GetAllDepartments(), nameof(DepartmentDetalisToReturnDTO.Id), nameof(DepartmentDetalisToReturnDTO.Name));
+
+    // var Departments = new SelectList(ViewData["Departments"] as IEnumerable<EmployeeDetalisToReturnDTO>,
+    // nameof(DepartmentDetalisToReturnDTO.Id),
+    // nameof(DepartmentDetalisToReturnDTO.Name));
+
+}
+
+<h1 class="col-6 my-4">Create New Employee</h1>
+
+<partial name="partials/CreateEditEmployeePartial" model="Model" />
+@section ValidationScripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+

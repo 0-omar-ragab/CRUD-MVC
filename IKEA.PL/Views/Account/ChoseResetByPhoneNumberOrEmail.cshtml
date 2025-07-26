@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "ChoseResetByPhoneNumberOrEmail";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+
+
+<div class="main-agileinfo">
+	<div class="agileits-top">
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<form asp-action="ChoseResetByPhoneNumberOrEmail" method="post">
+
+			<input type="submit" name="option" value="Email">
+
+			<input type="submit" name="option" value="Phone">
+		</form>
+
+	</div>
+</div>
+@section ValidationScripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
+
+
+@* <div class="main-agileinfo">
+<div class="agileits-top">
+	<div asp-validation-summary="All" class="text-danger"></div>
+
+        <form asp-action="ChoseResetByPhoneNumberOrEmail" method="post">
+
+            <button type="submit" name="option" value="Email">Reset by Email</button>
+
+            <button type="submit" name="option" value="Phone">Reset by Phone Number</button>
+        </form>
+
+</div>
+</div>
+@section ValidationScripts
+{
+	<partial name="_ValidationScriptsPartial" />
+} *@

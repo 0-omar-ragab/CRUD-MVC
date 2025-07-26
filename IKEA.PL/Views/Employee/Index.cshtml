@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNetCore.Html
+@model IEnumerable<EmployeeToReturnDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    var modals = new List<IHtmlContent>();
+}
+
+ @if (!string.IsNullOrEmpty(ViewData["Massage"] as string)) 
+ { 
+     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"> 
+         <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true"> 
+             <div class="toast-header"> 
+                 <img class="rounded" /> 
+                 <strong class="me-auto">IKEA</strong> 
+@*               <small>@DateTime.Now.Minute mins ago</small>
+ *@                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> 
+             </div> 
+             <div class="toast-body"> 
+                 @TempData["Massage"] 
+             </div> 
+
+         </div> 
+     </div> 
+ } 
+
+<h1>All Employees</h1>
+
+<br />
+<br />
+
+<a asp-controller="Employee" asp-action="Create" class="btn btn-primary">Create New Employee</a>
+
+<br />
+
+<form asp-action="Index" method="get" class="mt-5 row justify-content-center align-items-center">
+
+    <div class="row col-8">
+
+		<div class="col-8">
+
+		<input type="text" name="search" 
+            class="form-control" id="searchInp" 
+        placeholder=" Search by Name " />
+	</div>
+	<div class="col-4">
+            <input type="submit" value="search" class="btn btn-success">
+	</div>
+        </div>
+
+
+</form>
+
+<br />
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped table-hover mt-4">
+        <thead class="text-center">
+            <tr>
+                <th>@Html.DisplayNameFor(X => X.Name)</th>
+                <th>@Html.DisplayNameFor(X => X.Email)</th>
+                <th>@Html.DisplayNameFor(X => X.Department)</th>
+                <th>@Html.DisplayNameFor(X => X.EmployeeType)</th>
+                <th>@Html.DisplayNameFor(X => X.Age)</th>
+                <th>@Html.DisplayNameFor(X => X.Salary)</th>
+                <th>@Html.DisplayNameFor(X => X.IsActive)</th>
+                <th>@Html.DisplayNameFor(X => X.Gender)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody class="text-center" id="results">
+
+             <partial name="partials/EployeeListPartial" model="Model" /> 
+
+        </tbody>
+    </table>
+
+     @* Place all modals here after the table  *@
+    @foreach (var modal in modals)
+    {
+        @modal
+    }
+}
+else
+{
+    <div class="alert alert-info mt-3">
+        <h3> Sorry There Is No Employees :(</h3>
+    </div>
+}
+
+
+
+
+
+
+
